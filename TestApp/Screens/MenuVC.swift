@@ -22,7 +22,7 @@ class MenuVC: DataLoadingVC {
     private var timer: Timer?
     
     private lazy var navBar = UINavigationBar(frame: .zero)
-    private lazy var collectionView         = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createLayout(in: view))
+    private lazy var collectionView         = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createMenuLayout(in: view))
     private lazy var headerViewCategories   = CategoriesHeaderView(frame: .zero)
     private lazy var chooseCityButton       = UIButton()
     private lazy var chevronDownImage       = UIImageView()

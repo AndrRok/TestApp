@@ -32,7 +32,7 @@ class FoodItemCell: UICollectionViewCell {
     public func setFromAPI(foodItem: Food){
         foodNameLabel.text = foodItem.name
         foodDescriptionLabel.text = foodItem.description
-        foodPriceLabel.text = String(foodItem.price) + " руб"
+        foodPriceLabel.text = "от \(String(foodItem.price)) руб"
         foodImageView.downloadImage(fromURL: foodItem.image)
     }
     

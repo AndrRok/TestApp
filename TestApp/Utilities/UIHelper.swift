@@ -38,16 +38,16 @@ enum UIHelper{
     //MARK: - Compositional layout for sales
     static func createSalesLayout(in view: UIView) -> UICollectionViewCompositionalLayout{
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10)
         // Group
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)), repeatingSubitem: item, count: 1)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(1.0)), repeatingSubitem: item, count: 1)
         
         // Sections
         
         let section = NSCollectionLayoutSection(group: group)
         
-        section.orthogonalScrollingBehavior = .groupPaging
+        section.orthogonalScrollingBehavior = .continuous
         
         // Return
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -55,11 +55,8 @@ enum UIHelper{
     }
     
     
-    
-    
-    
     //MARK: - Compositional layout for items
-    static func createLayout(in view: UIView) -> UICollectionViewCompositionalLayout{
+    static func createMenuLayout(in view: UIView) -> UICollectionViewCompositionalLayout{
         return UICollectionViewCompositionalLayout{ (sectionNumber, env) -> NSCollectionLayoutSection? in
             
             // Item
@@ -74,11 +71,11 @@ enum UIHelper{
             
             let section = NSCollectionLayoutSection(group: group)
             let headerKind = UICollectionView.elementKindSectionHeader
-            var headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+            var headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(60))
             
             switch sectionNumber{
             case 0:
-                headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300))
+                headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(300))
             default:
                 break
             }
@@ -86,12 +83,10 @@ enum UIHelper{
             let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: headerKind, alignment: .top)
             // for sticky header
             headerElement.pinToVisibleBounds = true
-            
             section.boundarySupplementaryItems = [headerElement]
             // Return
             return section
         }
     }
-    
 }
 
